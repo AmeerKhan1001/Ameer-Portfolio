@@ -1,0 +1,167 @@
+---
+import { Icon } from "astro-icon/components";
+import AccordionLayout from "../layouts/AccordionLayout.astro";
+import * as about from "../pages/about/about.md";
+import Card from "./Card.astro";
+const aboutContent = await about.compiledContent();
+import ContactCard from "./ContactCard.astro";
+const works = Object.values(import.meta.glob("../pages/works/*.md", { eager: true }));
+const coursesTaught = Object.values(import.meta.glob("../pages/courses-taught/*.md", { eager: true }));
+const projects = Object.values(import.meta.glob("../pages/projects/*.md", { eager: true }));
+const studies = Object.values(import.meta.glob("../pages/studies/*.md", { eager: true }));
+const certificates = Object.values(import.meta.glob("../pages/certificates/*.md", { eager: true }));
+const blogs = Object.values(import.meta.glob("../pages/blogs/*.md", { eager: true }));
+const contact = Object.values(import.meta.glob("../pages/contact/*.md", { eager: true }));
+const PDF = "/cv-20240219.pdf";
+---
+
+<div class="join join-vertical gap-1">
+  <AccordionLayout title={"About"} icon={"carbon:identification"}>
+    <article>
+      <Fragment set:html={aboutContent} />
+    </article>
+  </AccordionLayout>
+
+  <AccordionLayout title={"Udemy Courses Taught"} icon={"carbon:wikis"}>
+    {
+      coursesTaught.map((item: any) => {
+        return (
+          <Card
+            title={item.frontmatter.title}
+            timeframe={item.frontmatter.date}
+            description={item.compiledContent()}
+            tags={item.frontmatter.tags}
+            url={item.frontmatter.url}
+            url_name={"View Course"}
+          />
+        );
+      })
+    }
+  </AccordionLayout>
+
+  <AccordionLayout title={"Work"} icon={"carbon:construction"}>
+    {
+
+      works.map((item: any) => {
+        return (
+          <Card
+            title={item.frontmatter.title}
+            timeframe={item.frontmatter.date}
+            description={item.compiledContent()}
+            tags={item.frontmatter.tags}
+            url={item.frontmatter.url}
+            url_name={item.frontmatter.org}
+            location={item.frontmatter.location}
+          />
+        );
+      })
+    }
+  </AccordionLayout>
+
+  <AccordionLayout title={"Studies"} icon={"carbon:education"}>
+    {
+      studies.map((item: any) => {
+        return (
+          <Card
+            title={item.frontmatter.title}
+            timeframe={item.frontmatter.date}
+            location={item.frontmatter.location}
+            tags={item.frontmatter.tags}
+            url={item.frontmatter.url}
+            url_name={item.frontmatter.institute}
+          />
+        );
+      })
+    }
+  </AccordionLayout>
+
+  <AccordionLayout title={"Projects"} icon={"carbon:tools"}>
+    { 
+      projects.map((item: any) => {
+        return (
+          <Card
+            title={item.frontmatter.title}
+            timeframe={item.frontmatter.date}
+            description={item.compiledContent()}
+            tags={item.frontmatter.tags}
+            url={item.frontmatter.url}
+            url_name={"View project"}
+          />
+        );
+      })
+    }
+  </AccordionLayout>
+
+  <AccordionLayout title={"Certifications"} icon={"carbon:certificate"}>
+    {
+      certificates.map((item: any) => {
+        return (
+          <Card
+            title={item.frontmatter.title}
+            timeframe={item.frontmatter.date}
+            description={item.compiledContent()}
+            tags={item.frontmatter.tags}
+            url={item.frontmatter.url}
+            url_name={"View Certificate"}
+          />
+        );
+      })
+    }
+  </AccordionLayout>
+
+  <!-- <AccordionLayout title={"Blogs"} icon={"carbon:pen"}>
+    {
+      blogs.map((item) => {
+        return (
+          <Card
+            title={item.frontmatter.title}
+            timeframe={item.frontmatter.date}
+            description={item.compiledContent()}
+            url={item.frontmatter.url}
+            url_name={item.frontmatter.url_name}
+          />
+        );
+      })
+    }
+  </AccordionLayout> -->
+
+  <!-- <AccordionLayout title={"Files"} icon={"carbon:volume-file-storage"}>
+    <div class="flex justify-center w-full">
+      <div
+        class="card card-compact card-bordered border-[oklch(var(--s))] w-96 md:w-112 lg:w-128 hover:shadow-lg transition-all"
+      >
+        <figure>
+          <object data={PDF} type="application/pdf" width="100%"></object>
+        </figure>
+        <div class="card-body">
+          <h2 class="card-title">Resume</h2>
+          <p>View and download my resume by clicking on the button below</p>
+          <div class="card-actions justify-end">
+            <a target="_blank" href={PDF}>
+              <button class="btn btn-outline">
+                <p>Download resume</p>
+                <Icon name="carbon:document-pdf" class="w-6 h-6 ml-1" />
+              </button>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </AccordionLayout> -->
+
+  <AccordionLayout title={"Contact"} icon={"carbon:location-person"}>
+    <div class="flex flex-wrap content-around gap-4 justify-center">
+      {
+        contact.map((item: any) => {
+          return (
+            <ContactCard
+              url={item.frontmatter.url}
+              url_name={item.frontmatter.title}
+              icon={item.frontmatter.icon}
+            />
+          );
+        })
+      }
+    </div>
+  </AccordionLayout>
+</div>
