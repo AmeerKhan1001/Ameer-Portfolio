@@ -22,6 +22,6 @@ website: "https://www.linkedin.com/in/ameer-khan-m/"
 
 ⭐️⭐️ 𝐂𝐥𝐨𝐮𝐝 𝐓𝐞𝐜𝐡𝐧𝐨𝐥𝐨𝐠𝐲 𝐀𝐝𝐞𝐩𝐭: Passed AZ-900 & leveraged cloud technologies to deliver impactful projects with strategic value.
 
-⭐️⭐️ 𝐊𝐧𝐨𝐰𝐥𝐞𝐝𝐠𝐞 𝐃𝐢𝐬𝐬𝐞𝐦𝐢𝐧𝐚𝐭𝐨𝐫: Mentored 2 interns from their onboarding to the internship stage and presented on Signal R to colleagues.
+⭐️⭐️ 𝐊𝐧𝐨𝐰𝐥𝐞𝐝𝐠𝐞 𝐃𝐢𝐬𝐬𝐞𝐦𝐢𝐧𝐚𝐭𝐨𝐫: Mentored 4 interns at the onboarding stage and presented on Signal R to colleagues.
 
 ⭐️ 𝐆𝐨𝐚𝐥-𝐎𝐫𝐢𝐞𝐧𝐭𝐞𝐝 𝐋𝐞𝐚𝐝𝐞𝐫: Driven to achieve team objectives while valuing diverse perspectives and fostering collaboration.
