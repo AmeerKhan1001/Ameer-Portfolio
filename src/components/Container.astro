@@ -7,6 +7,7 @@ const aboutContent = await about.compiledContent();
 import ContactCard from "./ContactCard.astro";
 const works = Object.values(import.meta.glob("../pages/works/*.md", { eager: true }));
 const coursesTaught = Object.values(import.meta.glob("../pages/courses-taught/*.md", { eager: true }));
+const sessionsTaken = Object.values(import.meta.glob("../pages/sessions/*.md", { eager: true }));
 const projects = Object.values(import.meta.glob("../pages/projects/*.md", { eager: true }));
 const studies = Object.values(import.meta.glob("../pages/studies/*.md", { eager: true }));
 const certificates = Object.values(import.meta.glob("../pages/certificates/*.md", { eager: true }));
@@ -33,6 +34,21 @@ const PDF = "/cv-20240219.pdf";
             tags={item.frontmatter.tags}
             url={item.frontmatter.url}
             url_name={"View Course"}
+          />
+        );
+      })
+    }
+  </AccordionLayout>
+
+  <AccordionLayout title={"Sessions Taken For Work Audience"} icon={"carbon:gift"}>
+    {
+      sessionsTaken.map((item: any) => {
+        return (
+          <Card
+            title={item.frontmatter.title}
+            timeframe={item.frontmatter.date}
+            description={item.compiledContent()}
+            tags={item.frontmatter.tags}
           />
         );
       })
