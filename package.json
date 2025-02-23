@@ -10,13 +10,16 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/netlify": "^5.5.4",
     "@astrojs/tailwind": "^5.1.0",
     "@fontsource-variable/dm-sans": "^5.0.5",
     "@iconify-json/carbon": "^1.1.31",
     "@iconify-json/mdi": "^1.1.64",
+    "@types/dompurify": "^3.0.5",
     "astro": "^4.5.14",
     "astro-compress": "^2.2.21",
     "astro-icon": "^1.1.0",
+    "dompurify": "^3.2.4",
     "framer-motion": "^11.0.7",
     "tailwindcss": "^3.4.3",
     "theme-change": "^2.5.0"

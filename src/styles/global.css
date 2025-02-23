@@ -39,3 +39,7 @@ body {
     flex-wrap: wrap;
   }
 }
+
+#searchInput {
+  margin-right: 20px;
+}
