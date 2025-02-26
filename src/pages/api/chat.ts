@@ -2,7 +2,7 @@ import type { APIRoute } from 'astro';
 
 export const POST: APIRoute = async ({ request }) => {
   const GEMINI_API_KEY = import.meta.env.GEMINI_API_KEY;
-  
+
   try {
     const { query, prompt } = await request.json();
 
@@ -12,17 +12,21 @@ export const POST: APIRoute = async ({ request }) => {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        contents: [{
-          parts: [
-            { text: prompt },
-            { text: query }
-          ]
-        }]
+        system_instruction: {
+          parts: {
+            text: prompt
+          }
+        },
+        contents: {
+          parts: {
+            text: query
+          }
+        }
       })
     });
 
     const data = await response.json();
-    
+
     return new Response(JSON.stringify({
       result: data.candidates[0].content.parts[0].text
     }), {
