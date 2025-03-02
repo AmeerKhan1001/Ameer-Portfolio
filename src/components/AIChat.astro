@@ -3,7 +3,7 @@ const promptFiles = await import.meta.glob('../pages/prompts/*.md', { as: 'raw' 
 const aiPrompt = await promptFiles['../pages/prompts/ai-prompt.md']();
 ---
 
-<div class="w-full max-w-2xl mx-auto p-4">
+<div class="w-full max-w-3xl mx-auto p-4">
   <div class="form-control">
     <div class="input-group input-group-horizontal flex">
       <input
@@ -31,6 +31,7 @@ const aiPrompt = await promptFiles['../pages/prompts/ai-prompt.md']();
 </div>
 
 <script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.0.8/purify.min.js"></script>
+<script is:inline src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 <script type="module" define:vars={{ aiPrompt }}>
   const searchInput = document.getElementById('searchInput');
   const searchButton = document.getElementById('searchButton');
@@ -63,21 +64,8 @@ const aiPrompt = await promptFiles['../pages/prompts/ai-prompt.md']();
       
       const result = data.result;
       
-      // Convert markdown-like text to HTML (basic conversion)
-      const htmlContent = result
-        .replace(/\n\n/g, '</p><p>')
-        .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-        .replace(/\*(.*?)\*/g, '<em>$1</em>')
-        .replace(/`(.*?)`/g, '<code>$1</code>')
-        .replace(/^# (.*$)/gm, '<h1>$1</h1>')
-        .replace(/^## (.*$)/gm, '<h2>$1</h2>')
-        .replace(/^### (.*$)/gm, '<h3>$1</h3>');
-      
       // Sanitize the HTML content
-      const cleanHtml = DOMPurify.sanitize('<p>' + htmlContent + '</p>', {
-        ALLOWED_TAGS: ['p', 'strong', 'em', 'code', 'h1', 'h2', 'h3', 'ul', 'ol', 'li', 'a'],
-        ALLOWED_ATTR: ['href']
-      });
+      const cleanHtml = DOMPurify.sanitize(marked.parse(result));
       
       responseContent.innerHTML = cleanHtml;
     } catch (error) {
