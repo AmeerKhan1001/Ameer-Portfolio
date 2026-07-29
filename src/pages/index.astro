@@ -11,13 +11,14 @@ import "../styles/global.css";
 <html lang="en">
   <head>
     <script is:inline>
-      if (localStorage.getItem("theme") === null) {
-        document.documentElement.setAttribute("data-theme", "black");
-      } else
-        document.documentElement.setAttribute(
-          "data-theme",
-          localStorage.getItem("theme")
-        );
+      window.__effectiveTheme =
+        localStorage.getItem("theme") === null
+          ? "black"
+          : localStorage.getItem("theme");
+      document.documentElement.setAttribute(
+        "data-theme",
+        window.__effectiveTheme
+      );
     </script>
     <script>
       import { themeChange } from "theme-change";
@@ -36,13 +37,17 @@ import "../styles/global.css";
       <Icon name="carbon:moon" class="w-4 h-4" />
       <input
         type="checkbox"
+        id="themeToggle"
         data-toggle-theme="black,lofi"
         data-act-class="ACTIVECLASS"
         class="toggle toggle-sm mx-1 bg-secondary"
-        checked
       />
       <Icon name="carbon:light" class="w-4 h-4" />
     </div>
+    <script is:inline>
+      document.getElementById("themeToggle").checked =
+        window.__effectiveTheme === "lofi";
+    </script>
 
     <section class="hero min-h-screen bg-gradient-to-b from-base-300 via-base-200 to-base-100">
       <div class="hero-content text-center w-full max-w-2xl flex-col px-4">
