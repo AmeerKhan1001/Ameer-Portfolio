@@ -34,7 +34,7 @@ To add/remove a section from the homepage, edit the `AccordionLayout` entries in
 ### Styling
 
 - Tailwind + daisyUI, themes `lofi` (light) and `black` (dark, default), toggled via the `theme-change` library and persisted to `localStorage`. `tailwind.config.mjs` only extends font family (DM Sans); all color/spacing tokens come from daisyUI themes, not Tailwind's own `theme.colors`.
-- `src/styles/global.css` has a global rule forcing 12px font-size under 480px width, and duplicated `.container` flex-direction media query blocks (same rule appears twice).
+- `src/styles/global.css` has a global rule forcing 12px font-size under 480px width. A `[data-theme="lofi"] .prose` override restores readable prose colors in the light theme (Tailwind Typography's `prose-invert` is otherwise hardcoded for the AI chat's dark default).
 
 ### Known dead/inconsistent state (useful context, not yet cleaned up)
 
