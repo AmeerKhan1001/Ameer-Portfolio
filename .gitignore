@@ -25,3 +25,7 @@ pnpm-debug.log*
 
 # git worktrees
 .worktrees/
+
+# hosting adapter build artifacts
+.netlify/
+.vercel/
