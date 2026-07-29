@@ -8,11 +8,11 @@ import { Icon } from "astro-icon/components";
 import "../styles/global.css";
 ---
 
-<html lang="gl">
+<html lang="en">
   <head>
     <script is:inline>
       if (localStorage.getItem("theme") === null) {
-        document.documentElement.setAttribute("data-theme", "lofi");
+        document.documentElement.setAttribute("data-theme", "black");
       } else
         document.documentElement.setAttribute(
           "data-theme",
@@ -27,10 +27,9 @@ import "../styles/global.css";
     <link rel="icon" type="image/png" href="/favicon.webp" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
-    <title>Ameer Khan CV</title>
+    <title>Ameer Khan — Senior Full Stack Engineer</title>
   </head>
   <body class="flex flex-col min-h-screen">
-    <Header />
     <div
       class="flex items-center absolute top-4 right-4 md:top-6 md:right-6 lg:top-8 lg:right-8 xl:top-10 xl:right-10 z-10"
     >
@@ -45,22 +44,27 @@ import "../styles/global.css";
       <Icon name="carbon:light" class="w-4 h-4" />
     </div>
 
-    <div
-      class="divider mx-auto h-fit max-w-3xl w-[95vw] flex flex-nowrap bg-secondary"
-    >
-    </div>
-    <AIChat />
-    <div
-      class="divider mx-auto h-fit max-w-3xl w-[95vw] flex flex-nowrap bg-secondary"
-    >
-    </div>
-    <main
-      class="mx-auto flex-grow max-h-[90vh] md:max-h-[70vh] max-w-3xl overflow-y-scroll py-2 grid w-[95vw]"
-    >
-      <div class="container">
-        <Container />
+    <section class="hero min-h-screen bg-gradient-to-b from-base-300 via-base-200 to-base-100">
+      <div class="hero-content text-center w-full max-w-2xl flex-col px-4">
+        <h1 class="text-3xl md:text-5xl font-extrabold tracking-tight mb-8">
+          Ask me anything about Ameer
+        </h1>
+        <AIChat />
       </div>
-    </main>
+    </section>
+
+    <div class="mx-auto w-[95vw] max-w-3xl mb-8">
+      <details class="collapse collapse-arrow border border-base-content/10 rounded-box">
+        <summary class="collapse-title font-semibold text-center">Prefer text?</summary>
+        <div class="collapse-content">
+          <Header />
+          <div class="container mt-4">
+            <Container />
+          </div>
+        </div>
+      </details>
+    </div>
+
     <Footer class="flex justify-center items-center py-4" />
   </body>
 </html>
