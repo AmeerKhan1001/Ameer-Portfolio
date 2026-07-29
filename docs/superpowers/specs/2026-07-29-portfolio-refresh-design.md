@@ -13,7 +13,7 @@ Refresh Ameer's portfolio (`Ameer-Portfolio`) to support an active job search (v
 2. Kill visible "unfinished" signals (dead resume link, `lang="gl"`, leaked `/prompts/ai-prompt` route, dead commented-out sections)
 3. Real downloadable CV (career-ops-generated ATS PDF)
 4. AI chat overhaul as the centerpiece feature (current model, proper auth, refreshed persona, no longer publicly leaked)
-5. Visual redesign: Gemini-app-style full-viewport dark hero as the landing experience, with existing detailed sections tucked behind a collapsed "Prefer text?" disclosure
+5. Visual redesign: Gemini-app-style full-viewport dark hero as the landing experience, with existing detailed sections tucked behind a collapsed "Prefer legacy view?" disclosure
 6. Hosting migration: Netlify → Vercel, `GEMINI_API_KEY` as a proper Vercel encrypted env var (never committed)
 7. Remove genuinely dead deps: `framer-motion`, `astro-compress` (unused, zero risk)
 
@@ -26,7 +26,7 @@ Downplay to a soft one-liner folded into the bio/skills area (not a dedicated se
 ## Homepage restructure
 
 - **Hero (above the fold, full viewport, dark theme default):** centered greeting (e.g. time-of-day-aware, "What's on your mind about Ameer?" style) above a pill-shaped chat input, styled after the Gemini app reference image — subtle radial gradient dark background, minimal chrome.
-- **"Prefer text?" disclosure (collapsed by default, below the fold):** expands to reveal the existing About / Work / Studies / Projects / Certifications / Contact accordion stack, restyled to the new dark-first palette (currently daisyUI `lofi`/`black` — keep the toggle, but this section no longer needs to carry the whole page's first impression).
+- **"Prefer legacy view?" disclosure (collapsed by default, below the fold):** expands to reveal the existing About / Work / Studies / Projects / Certifications / Contact accordion stack, restyled to the new dark-first palette (currently daisyUI `lofi`/`black` — keep the toggle, but this section no longer needs to carry the whole page's first impression).
 - The AI chat becomes the primary interaction, not a widget bolted onto an accordion stack.
 
 ## Content changes
@@ -35,7 +35,7 @@ Downplay to a soft one-liner folded into the bio/skills area (not a dedicated se
 - New `src/pages/projects/property-report.md`: Home Value Paid Report — from `cv.md`.
 - New `src/pages/projects/xomegpt.md`: currently only a one-line mention inside `work1.md` — promote to a full project entry (Azure OpenAI API + chart.js, internal AI tool) from `cv.md`.
 - `src/pages/about/about.md`: rewritten bio matching `cv.md`/career-ops `_profile.md` narrative (Senior Full Stack Engineer, 6+ yrs, AI-SDLC work); entrepreneurship folded in per the framing decision above.
-- Resume: generate/export an ATS PDF via career-ops (`/career-ops pdf`) and link it from the "Prefer text?" section, replacing the dead `/cv-20240219.pdf` reference in `Container.astro`.
+- Resume: generate/export an ATS PDF via career-ops (`/career-ops pdf`) and link it from the "Prefer legacy view?" section, replacing the dead `/cv-20240219.pdf` reference in `Container.astro`.
 
 ## Bug fixes
 
