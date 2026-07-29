@@ -1,6 +1,6 @@
 ---
-const promptFiles = await import.meta.glob('../pages/prompts/*.md', { as: 'raw' });
-const aiPrompt = await promptFiles['../pages/prompts/ai-prompt.md']();
+const promptFiles = await import.meta.glob('../data/*.md', { as: 'raw' });
+const aiPrompt = await promptFiles['../data/ai-prompt.md']();
 ---
 
 <div class="w-full max-w-3xl mx-auto p-4">
