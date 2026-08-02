@@ -7,7 +7,7 @@ date: 2024
 
 Paid service ($9/address) delivering a comprehensive property-insights report: valuation, transaction/tax history, market trends, rental estimates, and environmental/climate risk data — helping buyers, sellers, and investors make informed decisions.
 
-- Owned end to end: design, development, maintenance, deployment.
+- Led a 2-person team — myself and one other engineer — owning it end to end: design, development, maintenance, deployment.
 - Integrated Cybersource microform payments (card, Google Pay, Apple Pay).
 - Built frontend, backend, DB design, APIs, and .NET Worker Services with RabbitMQ.
 - 30+ reports sold.
